@@ -6,4 +6,4 @@ export default class UserEntry extends React.Component {
       <h1>User Entry</h1>
     );
   }
-}
+};
