@@ -15,13 +15,15 @@ export default class Container extends React.Component {
         <UserEntry 
           onTranslate={this.translate}
         />
-        {
-          this.state.listings.map(function(listing) {
-            return (
-              <UrbanDictionaryListing key={listing.defid} listing={listing} />
-            );
-          }, this)
-        }
+        <div className="vspace">
+          {
+            this.state.listings.map(function(listing) {
+              return (
+                <UrbanDictionaryListing key={listing.defid} listing={listing} />
+              );
+            }, this)
+          }
+        </div>
       </div>
     );
   }
