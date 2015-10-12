@@ -26,6 +26,8 @@ $ npm install
 $ npm start
 ```
 
+* Open a browser to `http://localhost:8080`
+
 ## License
 
 <http://hoop33.mit-license.org/license.txt>
