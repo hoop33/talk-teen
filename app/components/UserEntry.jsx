@@ -23,9 +23,12 @@ export default class UserEntry extends React.Component {
   }
   translate = (e) => {
     e.preventDefault();
-    this.props.onTranslate(this.refs.teen.value);
-    this.setState({
-      text: ''
-    });
+    var term = this.refs.teen.value.trim();
+    if (term.length > 0) {
+      this.props.onTranslate(term);
+      this.setState({
+        text: ''
+      });
+    }
   }
 };

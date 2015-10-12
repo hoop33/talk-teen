@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Title from './Title.jsx';
 import UserEntry from './UserEntry.jsx';
+import UrbanDictionaryListing from './UrbanDictionaryListing.jsx';
 
 export default class Container extends React.Component {
   render() {
@@ -14,14 +15,20 @@ export default class Container extends React.Component {
         <UserEntry 
           onTranslate={this.translate}
         />
+        {
+          this.state.listings.map(function(listing) {
+            return (
+              <UrbanDictionaryListing key={listing.defid} listing={listing} />
+            );
+          }, this)
+        }
       </div>
     );
   }
   state = {
-    response: ''
+    listings: []
   }
   translate = (text) => {
-    console.log('Translating ' + text);
     var key = this.props.mashapeKey;
     $.ajax({
       url: this.props.url,
@@ -34,8 +41,7 @@ export default class Container extends React.Component {
         xhr.setRequestHeader('X-Mashape-Key', key);
       },
       success: function(data) {
-        this.setState({response: data});
-        console.log(data);
+        this.setState({listings: data.list});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
