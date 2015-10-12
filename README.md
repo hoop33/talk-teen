@@ -2,6 +2,30 @@
 
 > An Urban Dictionary client using React and Webpack
 
-## TODO
+## Installation
 
-Nothing has been done yet. Not even pre-alpha.
+* Install [Node.js](https://nodejs.org/)
+* Clone the project:
+
+```
+$ git clone git@github.com:hoop33/talk-teen.git
+$ cd talk-teen
+```
+
+* Run NPM install:
+
+```
+$ npm install
+```
+
+* Get a [mashape](https://www.mashape.com/) API key
+* Copy `app/mashape.example.js` to `app/mashape.js` and update with your key
+* Run the app:
+
+```
+$ npm start
+```
+
+## License
+
+<http://hoop33.mit-license.org/license.txt>
