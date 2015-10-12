@@ -31,7 +31,6 @@ export default class Container extends React.Component {
     listings: []
   }
   translate = (text) => {
-    var key = this.props.mashapeKey;
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -40,8 +39,8 @@ export default class Container extends React.Component {
         'term': text
       },
       beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-Mashape-Key', key);
-      },
+        xhr.setRequestHeader('X-Mashape-Key', this.props.mashapeKey);
+      }.bind(this),
       success: function(data) {
         this.setState({listings: data.list});
       }.bind(this),
