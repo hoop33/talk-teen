@@ -48,6 +48,11 @@ var common = {
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loaders: ['url?limit=10000&mimetype=image/svg+xml']
+      },
+      {
+        test: /\.json$/,
+        loaders: ['json'],
+        include: path.resolve(ROOT, 'node_modules', 'bad-words')
       }
     ]
   },
