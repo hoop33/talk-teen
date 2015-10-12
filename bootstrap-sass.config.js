@@ -1,3 +1,5 @@
+// Thanks to https://github.com/shakacode/bootstrap-sass-loader-example
+
 module.exports = {
   // Use preBootstrapCustomizations to change $brand-primary. Ensure this preBootstrapCustomizations does not
   // depend on other bootstrap variables.
