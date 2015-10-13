@@ -23,8 +23,7 @@
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
     "react": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "sizzle": "^2.2.0"
+    "react-dom": "^0.14.0"
   },
   "devDependencies": {
     "babel-core": "^5.8.25",
