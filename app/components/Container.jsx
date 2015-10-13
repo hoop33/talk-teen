@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
+import Axios from 'axios';
 import Title from './Title.jsx';
 import UserEntry from './UserEntry.jsx';
 import UrbanDictionaryListing from './UrbanDictionaryListing.jsx';
@@ -12,7 +12,7 @@ export default class Container extends React.Component {
           title="Talk Teen"
           subtitle="Communicate with the incomprehensible"
         />
-        <UserEntry 
+        <UserEntry
           onTranslate={this.translate}
         />
         <div className="vspace">
@@ -31,22 +31,21 @@ export default class Container extends React.Component {
     listings: []
   }
   translate = (text) => {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      type: 'GET',
-      data: {
-        'term': text
+    Axios.get(this.props.url, {
+      params: {
+        term: text
       },
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-Mashape-Key', this.props.mashapeKey);
-      }.bind(this),
-      success: function(data) {
-        this.setState({listings: data.list});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
+      headers: {
+        'X-Mashape-Key': this.props.mashapeKey
+      }
+    })
+    .then((response) => {
+      this.setState({
+        listings: response.data.list
+      });
+    })
+    .catch((response) => {
+      console.error(response);
     });
   }
 };
