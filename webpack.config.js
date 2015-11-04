@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 var HTMLWebPackPlugin = require('html-webpack-plugin');
+var StringReplacePlugin = require('string-replace-webpack-plugin');
 var path = require('path');
 
 var TARGET = process.env.npm_lifecycle_event;
@@ -53,6 +54,19 @@ var common = {
         test: /\.json$/,
         loaders: ['json'],
         include: path.resolve(ROOT, 'node_modules', 'bad-words')
+      },
+      {
+        test: /mashape.js$/,
+        loader: StringReplacePlugin.replace({
+          replacements: [
+            {
+              pattern: /MASHAPE_KEY/,
+              replacement: function(match, p1, offset, string) {
+                return process.env.MASHAPE_KEY;
+              }
+            }
+          ]
+        })
       }
     ]
   },
@@ -60,6 +74,7 @@ var common = {
     new HTMLWebPackPlugin({
       title: 'Talk Teen'
     }),
+    new StringReplacePlugin()
   ]
 };
 

@@ -19,12 +19,19 @@ $ npm install
 ```
 
 * Get a [mashape](https://www.mashape.com/) API key
-* Copy `app/mashape.example.js` to `app/mashape.js` and update with your key
-* Run the app:
+* Run the app, setting your mashape key as the `MASHAPE_KEY` environment variable:
 
 ```
-$ npm start
+$ MASHAPE_KEY=<your mashape key> npm start
 ```
+
+Example:
+
+```
+$ MASHAPE_KEY=asljrvq398r7bacshjnfaksyf29o83 npm start
+```
+
+(Apologies if I happened to duplicate anyone's real mashape key with my random keyboard mashing.)
 
 * Open a browser to `http://localhost:8080`
 
